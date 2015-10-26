@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todo">
+    <head>
+        <title>To Do List</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
+
+    </head>
+    <body>
+        <nav class="ToDo-navBar">
+            <a class="ToDo-navBar-logo" href="#">To Do List</a>
+        </nav>
+
+        <div class="ToDo-mainContent">
+            <section class="ToDo-addItem">
+                <input class="ToDo-input-text" id="new-task" type="text" placeholder="Add item here">
+                <button class="ToDo-btn" id="addButton">Add</button>
+            </section>
+
+            <section class="ToDo-incompleteTask">
+                <div class="ToDo-incompleteTask-inner">
+                    <h3 class="ToDo-incompleteTask-title">Todo</h3>
+                    <ul class="ToDo-incompleteTask-list" id="incomplete-tasks">
+                    </ul>
+                </div>
+            </section>
+
+            <section class="ToDo-completedTask">
+                <h3 class="ToDo-completedTask-title">Completed</h3>
+                <ul class="ToDo-completedTask-list" id="completed-tasks">
+                </ul>
+            </section>
+        </div>
+
+        <footer class="ToDo-footer">
+            <div class="ToDo-footer-inner">
+                <div class="ToDo-footer-content">
+
+                </div>
+            </div>
+        </footer>
+
+        <script src="scripts/app.js"></script>
+    </body>
+</html>
