@@ -9,6 +9,7 @@ __MACOSX
 .settings
 .classpath
 .sass-cache/
+.node_modules
 
 # OS generated files #
 ######################
