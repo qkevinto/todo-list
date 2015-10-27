@@ -41,33 +41,34 @@ var Task = (function () {
     this.listItem.appendChild(this.listItemInner);
     this.listItem.appendChild(this.editButton);
     this.listItem.appendChild(this.deleteButton);
-
-    var incompleteTasksHolder = document.getElementById("incomplete-tasks"); // incomplete-tasks
-    incompleteTasksHolder.appendChild(this.listItem);
-
-    /** Elements Selection for attaching events */
-    // cycle over the incompleteTasksHolder ul li
-    for (var i = 0; i < incompleteTasksHolder.children.length; i++) {
-      // bind events to li's children (taskCompleted)
-      this.bindTaskEvents(incompleteTasksHolder.children[i], this.taskCompleted);
-    }
-
-    // cycle over the completedTasksHolder ul li
-    if (this.completedTasksHolder) {
-
-      for (var i = 0; i < this.completedTasksHolder.children.length; i++) {
-        // foreach li
-        // bind events to li's children (taskIncomplete)
-        this.bindTaskEvents(this.completedTasksHolder.children[i], this.taskIncomplete);
-      }
-    }
-
-    return this.listItem;
   }
 
   // Set the click handler to addTask function
 
   _createClass(Task, [{
+    key: "createTask",
+    value: function createTask() {
+      var incompleteTasksHolder = document.getElementById("incomplete-tasks"); // incomplete-tasks
+      incompleteTasksHolder.appendChild(this.listItem);
+
+      /** Elements Selection for attaching events */
+      // cycle over the incompleteTasksHolder ul li
+      for (var i = 0; i < incompleteTasksHolder.children.length; i++) {
+        // bind events to li's children (taskCompleted)
+        this.bindTaskEvents(incompleteTasksHolder.children[i], this.taskCompleted);
+      }
+
+      // cycle over the completedTasksHolder ul li
+      if (this.completedTasksHolder) {
+
+        for (var i = 0; i < this.completedTasksHolder.children.length; i++) {
+          // foreach li
+          // bind events to li's children (taskIncomplete)
+          this.bindTaskEvents(this.completedTasksHolder.children[i], this.taskIncomplete);
+        }
+      }
+    }
+  }, {
     key: "editTask",
     value: function editTask() {
       // When the edit button is pressed
@@ -157,22 +158,33 @@ var Task = (function () {
   return Task;
 })();
 
-var ToDo = function ToDo() {
-  _classCallCheck(this, ToDo);
+var ToDo = (function () {
+  function ToDo() {
+    _classCallCheck(this, ToDo);
+  }
 
-  var _this = this;
+  _createClass(ToDo, [{
+    key: "init",
+    value: function init() {
+      var _this = this;
 
-  _this.taskInput = document.getElementById("new-task"); // new-task
-  _this.addButton = document.getElementById("addButton"); // first-button
+      _this.taskInput = document.getElementById("new-task"); // new-task
+      _this.addButton = document.getElementById("addButton"); // first-button
 
-  _this.addButton.addEventListener("click", function () {
-    if (_this.taskInput.value === "") {
-      alert("Please insert a new task");
-    } else {
-      var task = new Task(_this.taskInput.value);
-      _this.taskInput.value = "";
+      _this.addButton.addEventListener("click", function () {
+        if (_this.taskInput.value === "") {
+          alert("Please insert a new task");
+        } else {
+          var task = new Task(_this.taskInput.value);
+          task.createTask();
+          _this.taskInput.value = "";
+        }
+      });
     }
-  });
-};
+  }]);
+
+  return ToDo;
+})();
 
 var toDo = new ToDo();
+toDo.init();

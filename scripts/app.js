@@ -35,7 +35,9 @@ class Task {
     this.listItem.appendChild(this.listItemInner);
     this.listItem.appendChild(this.editButton);
     this.listItem.appendChild(this.deleteButton);
+  }
 
+  createTask() {
     let incompleteTasksHolder = document.getElementById("incomplete-tasks"); // incomplete-tasks
     incompleteTasksHolder.appendChild(this.listItem);
 
@@ -55,8 +57,6 @@ class Task {
         this.bindTaskEvents(this.completedTasksHolder.children[i], this.taskIncomplete);
       }
     }
-
-    return this.listItem;
   }
 
   editTask() {
@@ -143,7 +143,7 @@ class Task {
 // Set the click handler to addTask function
 
 class ToDo {
-  constructor() {
+  init() {
     let _this = this;
 
     _this.taskInput = document.getElementById("new-task"); // new-task
@@ -154,6 +154,7 @@ class ToDo {
         alert("Please insert a new task");
       } else {
         let task = new Task(_this.taskInput.value);
+        task.createTask();
         _this.taskInput.value = "";
       }
     });
@@ -161,3 +162,4 @@ class ToDo {
 }
 
 let toDo = new ToDo();
+toDo.init();
