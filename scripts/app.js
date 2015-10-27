@@ -1,6 +1,8 @@
 /**
 * JavaScript To Do List application
 */
+"use strict";
+
 class Task {
   constructor(taskString) {
     this.listItem = document.createElement("li");
@@ -84,37 +86,37 @@ class Task {
 
   deleteTask() {
     // When the delete button is pressed
-      // Remove the parent li from the ul
-      this.listItem = this.parentNode;
-      let ul = this.listItem.parentNode;
+    // Remove the parent li from the ul
+    this.listItem = this.parentNode;
+    let ul = this.listItem.parentNode;
 
-      ul.removeChild(this.listItem);
+    ul.removeChild(this.listItem);
   }
 
   taskCompleted(_this, checkbox) {
     // When the checkbox is checked
-      // append the task li to the #completed-tasks
-      let listItemInner = checkbox.parentNode;
-      let listItem = listItemInner.parentNode;
-      let labelCompleted = checkbox.nextSibling;
-      labelCompleted.className += " ToDo-completedTask-label";
-      let completedTasksHolder = document.getElementById("completed-tasks"); // completed-tasks
-      completedTasksHolder.appendChild(listItem);
+    // append the task li to the #completed-tasks
+    let listItemInner = checkbox.parentNode;
+    let listItem = listItemInner.parentNode;
+    let labelCompleted = checkbox.nextSibling;
+    labelCompleted.className += " ToDo-completedTask-label";
+    let completedTasksHolder = document.getElementById("completed-tasks"); // completed-tasks
+    completedTasksHolder.appendChild(listItem);
 
-      _this.bindTaskEvents(listItem, _this.taskIncomplete);
+    _this.bindTaskEvents(listItem, _this.taskIncomplete);
   }
 
   taskIncomplete(_this, checkbox) {
     // When the checkbox is unchecked
-      // append the task li to the #incomplete-tasks
-      let listItemInner = checkbox.parentNode;
-      let listItem = listItemInner.parentNode;
-      let labelIncomplete = checkbox.nextSibling;
-      labelIncomplete.className = "ToDo-label";
-      let incompleteTasksHolder = document.getElementById("incomplete-tasks");
-      incompleteTasksHolder.appendChild(listItem);
+    // append the task li to the #incomplete-tasks
+    let listItemInner = checkbox.parentNode;
+    let listItem = listItemInner.parentNode;
+    let labelIncomplete = checkbox.nextSibling;
+    labelIncomplete.className = "ToDo-label";
+    let incompleteTasksHolder = document.getElementById("incomplete-tasks");
+    incompleteTasksHolder.appendChild(listItem);
 
-      _this.bindTaskEvents(listItem, _this.taskCompleted);
+    _this.bindTaskEvents(listItem, _this.taskCompleted);
   }
 
   bindTaskEvents(taskListItem, checkboxEventHandler) {
@@ -133,27 +135,29 @@ class Task {
 
     // bind taskCompleted (checkboxEventHandler) to checkbox
     checkBox.addEventListener("click", function() {
-        checkboxEventHandler(_this, this);
+      checkboxEventHandler(_this, this);
     });
   }
 }
 
 // Set the click handler to addTask function
 
-let ToDo = function() {
-  let _this = this;
+class ToDo {
+  constructor() {
+    let _this = this;
 
-  _this.taskInput = document.getElementById("new-task"); // new-task
-  _this.addButton = document.getElementById("addButton"); // first-button
+    _this.taskInput = document.getElementById("new-task"); // new-task
+    _this.addButton = document.getElementById("addButton"); // first-button
 
-  _this.addButton.addEventListener("click", function() {
-    if (_this.taskInput.value === "") {
-      alert("Please insert a new task");
-    } else {
-      let task = new Task(_this.taskInput.value);
-      _this.taskInput.value = "";
-    }
-  });
+    _this.addButton.addEventListener("click", function() {
+      if (_this.taskInput.value === "") {
+        alert("Please insert a new task");
+      } else {
+        let task = new Task(_this.taskInput.value);
+        _this.taskInput.value = "";
+      }
+    });
+  }
 }
 
 let toDo = new ToDo();

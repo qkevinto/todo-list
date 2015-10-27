@@ -1,5 +1,5 @@
-var eslint = require('gulp-eslint');
 var gulp = require('gulp');
+var eslint = require('gulp-eslint');
 var browserSync = require('browser-sync');
 var babel = require('gulp-babel');
 
@@ -21,24 +21,25 @@ var paths = {
 
 // JavaScript Linter
 gulp.task('lint', function() {
-  return gulp.src('paths.js/source')
+  return gulp.src(paths.js.source)
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failOnError());
 });
 
-// ES6 Transpiler
+// Babel - ES6 Transpiler
 gulp.task('babel', function() {
-  return gulp.src('paths.js.source')
+  return gulp.src(paths.js.source)
     .pipe(babel())
     .pipe(gulp.dest(paths.js.dest));
 });
 
 // CSS
 gulp.task('css', function() {
-  return gulp.src('./css/*.css')
+  return gulp.src(paths.css.source)
+    .pipe(gulp.dest(paths.css.dest))
     .pipe(browserSync.stream());
-})
+});
 
 // JavaScript
 gulp.task('js', ['lint', 'babel'], browserSync.reload);
@@ -50,7 +51,7 @@ gulp.task('build', ['css', 'js']);
 gulp.task('serve', ['build'], function () {
   browserSync({
     server: {
-      baseDir: "paths.base"
+      baseDir: paths.base
     }
   });
 
