@@ -10,8 +10,6 @@ __MACOSX
 .classpath
 .sass-cache/
 node_modules/
-css/*.css
-js/*.js
 
 # OS generated files #
 ######################

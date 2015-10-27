@@ -1,0 +1,131 @@
+/*** Variables ***/
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/*** Basic Style ***/
+* {
+  box-sizing: border-box;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+ul,
+li {
+  padding: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: initial;
+}
+ul,
+li {
+  list-style: none;
+}
+body {
+  font-family: Lato, sans-serif;
+  color: #262424;
+  font-size: 15px;
+  background-color: #fffbfe;
+}
+.ToDo-navBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 20px;
+  background-color: #70abaf;
+}
+.ToDo-navBar-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+.ToDo-label {
+  flex-grow: 2;
+  font-size: 15px;
+  font-weight: bold;
+  font-weight: 400;
+  color: #262424;
+}
+.ToDo-input-text {
+  width: 100%;
+  padding: 19px;
+  font-size: 15px;
+  border: 1px solid #c4c4c4;
+}
+.ToDo-input-checkbox {
+  margin-right: 20px;
+}
+.ToDo-btn {
+  padding: 19px 24px;
+  margin: 0 0 0 5px;
+  border: 1px solid #ff8530;
+  background-color: #FFB27C;
+}
+.ToDo-btn:hover {
+  background-color: #ff8530;
+}
+.ToDo-btn-delete {
+  border: 1px solid #FFB27C;
+  background-color: #ffdfc9;
+}
+.ToDo-btn-delete:hover {
+  background-color: #FFB27C;
+}
+.ToDo-mainContent {
+  min-width: 320px;
+  max-width: 600px;
+  margin: 150px auto;
+  padding: 40px;
+  background-color: #fff;
+  border: 1px solid #ededed;
+  border-radius: 3px;
+  box-shadow: 0 0 2px rgba(224, 224, 224, 0.56);
+}
+.ToDo-addItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.ToDo-incompleteTask-list-inner,
+.ToDo-completedTask-list-inner {
+  flex-grow: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: 18px;
+  align-items: center;
+  border-bottom: 1px solid #c4c4c4;
+}
+.ToDo-incompleteTask-list-item,
+.ToDo-completedTask-list-item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.ToDo-completedTask-label {
+  text-decoration: line-through;
+  color: #424242;
+}
+/* Completed */
+/* Edit Task */
+ul li input[type=text] {
+  display: none;
+}
+ul li.editMode input[type=text] {
+  display: block;
+}
+ul li.editMode label {
+  display: none;
+}
